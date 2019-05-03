@@ -1,0 +1,28 @@
+{% extends '_layout.html' %}
+{% block content %}
+<h1>List of Stores</h1>
+<table border = '1'>
+
+<tr>
+<th>Store Name</th>
+<th>Warehouse Location</th>
+<th>Delete?</th>
+</tr>
+
+{% for store in stores %}
+<tr><td>{{store.name}}</td>
+<td>
+{% for warehouse in store.warehouses %}
+<span>{{warehouse.location}}</span> 
+{% endfor %}
+</td>
+<td>
+<form method ="post", action="{{url_for('delete', id=store.id)}}">
+<button type="submit" value= "Delete" class="btn btn-danger">Delete</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</tr>
+
+{% endblock %}

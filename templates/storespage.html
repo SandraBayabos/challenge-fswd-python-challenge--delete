@@ -1,0 +1,20 @@
+{% extends '_layout.html'%}
+{% block content %}
+<h1>{{store.name}}</h1>
+<h3>Number of warehouses</h3>
+{% for w in store.warehouses %}
+<ul>
+<li>
+{{w.location}}
+</li>
+</ul>
+{% endfor %}
+
+<form action="{{url_for('update', id=store.id)}}" method='post'>
+<div class="form-group">
+<label for="">Update Store Name</label>
+<input type="text" value="{{store.name}}" name ="newname" class="form-control">
+</div>
+
+<button type="submit" value = "Update" class ="btn btn-primary">Edit Store</button>
+{% endblock %}
